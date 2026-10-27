@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Sampled from the PBR baseColorFactor values in Backdrop_Pernikahan_Romantis_Updated.glb (see config/theme.ts) */
+  --color-primary: #b6768b; /* Floral_Mauve_Rose */
+  --color-secondary: #4c5137; /* Olive_Green_Drape */
+  --color-accent: #d4af37; /* Palette_Soft_Gold */
+  --color-background: #f6f2ea; /* Stage_Warm_Ivory */
+  --color-surface: #fdfbf7; /* Palette_Warm_Ivory */
+  --color-text: #2a3321; /* Garden_Foliage_Green, deepened for AAA contrast on ivory */
+  --color-muted: #6e665e; /* champagne taupe, 5.4:1 on ivory */
+  --color-border: #e8dec8; /* Palette_Champagne_Beige */
+  --color-blush: #e5c1c8; /* Floral_Dusty_Blush */
+  --color-gold-deep: #7a5f18; /* Soft_Gold darkened for text use (5.3:1 on ivory) */
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Per-section veils between the 3D venue and the text. Only the active one is visible;
+   they cross-fade, so the scene "calms down" or "opens up" as the guest scrolls. */
+.veil {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-cinematic);
+}
+.veil[data-active='true'] {
+  opacity: 1;
+}
+.veil-home {
+  background: linear-gradient(to top, var(--color-background) 0%, rgb(246 242 234 / 0.9) 22%, rgb(246 242 234 / 0) 52%);
+}
+.veil-story {
+  background: rgb(246 242 234 / 0.9);
+}
+.veil-event,
+.veil-location {
+  background: rgb(246 242 234 / 0.88);
+}
+.veil-gallery,
+.veil-rsvp {
+  background: rgb(246 242 234 / 0.95);
+}
+.veil-closing {
+  background: linear-gradient(to top, var(--color-background) 0%, rgb(246 242 234 / 0.88) 30%, rgb(246 242 234 / 0) 60%);
+}
+@media (min-width: 768px) {
+  .veil-story {
+    background: linear-gradient(to right, var(--color-background) 0%, rgb(246 242 234 / 0.94) 46%, rgb(246 242 234 / 0.35) 72%, rgb(246 242 234 / 0.1) 100%);
+  }
+  .veil-event,
+  .veil-location {
+    background: linear-gradient(to left, var(--color-background) 0%, rgb(246 242 234 / 0.93) 52%, rgb(246 242 234 / 0.45) 78%, rgb(246 242 234 / 0.2) 100%);
+  }
+}
+
+/* Shown when WebGL or the model is unavailable: the venue's palette, without the venue. */
+.venue-fallback {
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 38%, rgb(229 193 200 / 0.55), transparent 70%),
+    radial-gradient(ellipse 40% 60% at 15% 60%, rgb(76 81 55 / 0.22), transparent 70%),
+    radial-gradient(ellipse 40% 60% at 85% 60%, rgb(76 81 55 / 0.22), transparent 70%),
+    radial-gradient(circle at 50% 30%, rgb(212 175 55 / 0.18), transparent 35%),
+    var(--color-background);
+}
