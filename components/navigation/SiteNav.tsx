@@ -26,7 +26,7 @@ interface SiteNavProps {
 }
 
 const iconButton =
-  'inline-flex h-10 w-10 items-center justify-center text-secondary transition-colors duration-300 hover:text-primary';
+  'inline-flex h-10 w-10 items-center justify-center text-secondary transition-colors duration-300 hover:text-gold';
 
 export function SiteNav({ active, hasAudio, playing, onToggleAudio, canExplore, onExplore }: SiteNavProps) {
   const [open, setOpen] = useState(false);
@@ -60,7 +60,7 @@ export function SiteNav({ active, hasAudio, playing, onToggleAudio, canExplore, 
     >
       <nav
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-10"
-        style={{ background: 'linear-gradient(to bottom, rgb(246 242 234 / 0.92), rgb(246 242 234 / 0))' }}
+        style={{ background: 'linear-gradient(to bottom, rgb(244 237 225 / 0.92), rgb(244 237 225 / 0))' }}
         aria-label="Navigasi utama"
       >
         <button type="button" onClick={() => go('home')} className="font-serif text-xl tracking-wide text-text">

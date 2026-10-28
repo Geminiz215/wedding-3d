@@ -24,7 +24,7 @@ export function Story() {
                 <span className="absolute -left-[37px] top-2 h-2 w-2 rotate-45 bg-accent" aria-hidden />
                 <Reveal delay={i * 0.08}>
                   <p className="flex items-baseline gap-4">
-                    <span className="font-serif text-3xl text-primary">{m.year}</span>
+                    <span className="font-serif text-3xl italic text-gold">{m.year}</span>
                     <span className="text-[10px] uppercase tracking-[0.24em] text-secondary">{m.season}</span>
                   </p>
                   <h3 className="mt-2 font-serif text-2xl text-text">{m.title}</h3>

@@ -162,6 +162,7 @@ export default function WeddingInvitationPage() {
               onError={onError}
             />
           )}
+          <div className="lens pointer-events-none absolute inset-0" aria-hidden />
         </div>
 
         {/* Section veils keep text legible and set how present the venue feels in each chapter */}
@@ -212,7 +213,7 @@ export default function WeddingInvitationPage() {
               <button
                 type="button"
                 onClick={() => setExplore(false)}
-                className="pointer-events-auto inline-flex items-center gap-3 bg-secondary px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.26em] text-surface"
+                className="pointer-events-auto inline-flex items-center gap-3 bg-text px-8 py-4 text-[11px] font-medium uppercase tracking-[0.3em] text-surface"
                 autoFocus
               >
                 <X className="h-3.5 w-3.5" aria-hidden />

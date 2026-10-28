@@ -4,7 +4,7 @@ import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import { WEDDING_CONFIG } from '@/config/wedding';
-import { EASE, Ornament, buttonPrimary } from '@/components/sections/primitives';
+import { EASE } from '@/components/sections/primitives';
 
 interface OpeningInvitationProps {
   visible: boolean;
@@ -16,9 +16,15 @@ interface OpeningInvitationProps {
 
 const item = (delay: number) => ({
   initial: { opacity: 0, y: 14 },
-  animate: { opacity: 1, y: 0, transition: { duration: 1.4, ease: EASE, delay } },
+  animate: { opacity: 1, y: 0, transition: { duration: 1.6, ease: EASE, delay } },
 });
 
+const bar = 'absolute inset-x-0 h-[8svh] bg-[#1c1611]';
+
+/**
+ * Title sequence over the venue at dusk: letterbox bars, ivory type straight on the scene, no card.
+ * On open the bars retract and the dusk lifts while the camera walks in.
+ */
 export function OpeningInvitation({ visible, status, progress, pending, onOpen }: OpeningInvitationProps) {
   const { couple, date, quotes, headerLabel, audio } = WEDDING_CONFIG;
   const waiting = pending && status === 'loading';
@@ -28,52 +34,48 @@ export function OpeningInvitation({ visible, status, progress, pending, onOpen }
       {visible && (
         <motion.div
           key="opening"
-          className="fixed inset-0 z-40 flex items-center justify-center overflow-y-auto px-5 py-10"
-          style={{ background: 'rgb(246 242 234 / 0.62)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+          className="dusk fixed inset-0 z-40 overflow-y-auto text-ivory"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, backdropFilter: 'blur(0px)', transition: { duration: 1.8, ease: EASE } }}
+          exit={{ opacity: 0, transition: { duration: 2, ease: EASE, delay: 0.3 } }}
           role="dialog"
           aria-label="Undangan pernikahan"
         >
-          <motion.div
-            className="relative w-full max-w-[24rem] rounded-t-[999px] border border-border bg-surface px-8 pb-12 pt-24 text-center shadow-[0_30px_80px_-40px_rgba(42,51,33,0.35)] sm:px-10 sm:pt-28"
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 1.8, ease: EASE } }}
-            exit={{ opacity: 0, y: -40, scale: 1.04, transition: { duration: 1.2, ease: EASE } }}
-          >
-            {/* Inner arch line, after the backdrop's drape arch */}
-            <div className="pointer-events-none absolute inset-2.5 rounded-t-[999px] border border-accent opacity-60" aria-hidden />
+          <motion.div className={`${bar} top-0`} aria-hidden exit={{ y: '-100%', transition: { duration: 1.2, ease: EASE } }} />
+          <motion.div className={`${bar} bottom-0`} aria-hidden exit={{ y: '100%', transition: { duration: 1.2, ease: EASE } }} />
 
-            <motion.p {...item(0.5)} className="text-[10px] font-medium uppercase tracking-[0.42em] text-secondary">
+          <div className="relative flex min-h-[100svh] flex-col items-center justify-end px-6 pb-[calc(8svh+2.5rem)] pt-[14svh] text-center">
+            <motion.p {...item(0.6)} className="text-[10px] font-medium uppercase tracking-[0.5em] text-beige md:text-[11px]">
               {headerLabel}
             </motion.p>
 
-            <motion.h1 {...item(0.8)} className="mt-7 font-serif text-[2.75rem] font-normal leading-[1.05] text-text sm:text-5xl">
+            <motion.h1 {...item(0.9)} className="mt-6 font-serif text-[3.25rem] font-normal leading-[0.95] tracking-[-0.01em] sm:text-7xl md:text-8xl">
               {couple.groom.nickname}
-              <span className="my-1 block font-serif text-3xl italic text-primary">&amp;</span>
+              <span className="mx-3 font-normal italic text-blush md:mx-5">&amp;</span>
               {couple.bride.nickname}
             </motion.h1>
 
-            <motion.div {...item(1.1)} className="mt-7 flex justify-center">
-              <Ornament />
+            <motion.div {...item(1.2)} className="mt-8 flex items-center gap-5 text-[11px] font-medium uppercase tracking-[0.36em] text-beige">
+              <span className="h-px w-10 bg-accent" aria-hidden />
+              {date.shortDate}
+              <span className="h-px w-10 bg-accent" aria-hidden />
             </motion.div>
 
-            <motion.p {...item(1.25)} className="mt-5 font-serif text-lg tracking-[0.08em] text-secondary">
-              {date.displayFull}
-            </motion.p>
-
-            <motion.p {...item(1.4)} className="mx-auto mt-4 max-w-[16rem] font-serif text-[15px] italic leading-relaxed text-muted">
+            <motion.p {...item(1.4)} className="mx-auto mt-6 max-w-sm font-serif text-base italic leading-relaxed text-ivory/80">
               {quotes.openingQuote}
             </motion.p>
 
-            <motion.div {...item(1.7)} className="mt-10">
-              <button type="button" onClick={onOpen} disabled={waiting} className={buttonPrimary} aria-live="polite">
+            <motion.div {...item(1.8)} className="mt-11">
+              <button
+                type="button"
+                onClick={onOpen}
+                disabled={waiting}
+                aria-live="polite"
+                className="inline-flex min-w-[15rem] items-center justify-center gap-3 border border-ivory/40 px-9 py-4 text-[11px] font-medium uppercase tracking-[0.34em] text-ivory transition-colors duration-700 ease-cinematic hover:border-ivory hover:bg-ivory hover:text-text disabled:cursor-wait disabled:hover:bg-transparent disabled:hover:text-ivory"
+              >
                 {waiting ? (
                   <>
                     <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
-                    <span>
-                      Menyiapkan venue{progress !== null ? ` · ${Math.round(progress)}%` : '…'}
-                    </span>
+                    <span>Menyiapkan venue{progress !== null ? ` · ${Math.round(progress)}%` : '…'}</span>
                   </>
                 ) : (
                   <span>Buka Undangan</span>
@@ -81,24 +83,21 @@ export function OpeningInvitation({ visible, status, progress, pending, onOpen }
               </button>
             </motion.div>
 
-            <motion.div {...item(2)} className="mt-6 text-[11px] leading-relaxed tracking-wide text-muted">
+            <motion.div {...item(2.1)} className="mt-6 text-[11px] leading-relaxed tracking-[0.08em] text-ivory/70">
               {status === 'failed' ? (
                 <p>Venue 3D tidak dapat ditampilkan di perangkat ini. Undangan tetap dapat dibaca sepenuhnya.</p>
               ) : status === 'loading' ? (
                 <p className="flex items-center justify-center gap-3">
-                  <span className="relative h-px w-16 overflow-hidden bg-border" aria-hidden>
-                    <span
-                      className="absolute inset-y-0 left-0 bg-accent transition-[width] duration-300"
-                      style={{ width: `${progress ?? 30}%` }}
-                    />
+                  <span className="relative h-px w-16 overflow-hidden bg-ivory/20" aria-hidden>
+                    <span className="absolute inset-y-0 left-0 bg-accent transition-[width] duration-300" style={{ width: `${progress ?? 30}%` }} />
                   </span>
-                  <span>Memuat venue 3D</span>
+                  <span>Memuat venue</span>
                 </p>
               ) : (
-                <p>{audio.src ? 'Musik akan diputar setelah undangan dibuka' : 'Gulir perlahan untuk memasuki venue'}</p>
+                <p>{audio.src ? 'Musik akan diputar setelah undangan dibuka' : 'Selamat datang di hari bahagia kami'}</p>
               )}
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

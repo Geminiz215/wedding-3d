@@ -123,7 +123,7 @@ export function Rsvp() {
                           key={a.value}
                           className={`flex min-h-[48px] cursor-pointer items-center justify-center px-2 text-center text-xs tracking-wide transition-colors duration-300 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-secondary ${
                             i > 0 ? 'border-l border-border' : ''
-                          } ${form.attendance === a.value ? 'bg-secondary text-surface' : 'text-muted hover:text-text'}`}
+                          } ${form.attendance === a.value ? 'bg-text text-surface' : 'text-muted hover:text-text'}`}
                         >
                           <input type="radio" name="attendance" value={a.value} checked={form.attendance === a.value} onChange={() => set('attendance', a.value)} className="sr-only" />
                           {a.label}

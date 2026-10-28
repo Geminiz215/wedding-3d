@@ -35,14 +35,14 @@ export function Closing({ onExplore }: { onExplore: (() => void) | null }) {
         <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-muted">{quotes.closingNote}</p>
       </Reveal>
       <Reveal delay={0.2} className="mt-8">
-        <p className="font-serif text-5xl leading-none text-text md:text-7xl">
+        <p className="font-serif text-[3.25rem] leading-[0.95] tracking-[-0.01em] text-text sm:text-7xl md:text-8xl">
           {couple.groom.nickname}
           <span className="mx-3 italic text-primary md:mx-5">&amp;</span>
           {couple.bride.nickname}
         </p>
         <div className="mt-5 flex flex-col items-center gap-3">
           <Ornament />
-          <p className="font-serif text-lg tracking-[0.1em] text-secondary">{date.shortDate}</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.36em] text-secondary">{date.shortDate}</p>
         </div>
       </Reveal>
       <Reveal delay={0.4} className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:gap-10">

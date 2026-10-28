@@ -3,17 +3,18 @@
 @tailwind utilities;
 
 :root {
-  /* Sampled from the PBR baseColorFactor values in Backdrop_Pernikahan_Romantis_Updated.glb (see config/theme.ts) */
-  --color-primary: #b6768b; /* Floral_Mauve_Rose */
-  --color-secondary: #4c5137; /* Olive_Green_Drape */
-  --color-accent: #d4af37; /* Palette_Soft_Gold */
-  --color-background: #f6f2ea; /* Stage_Warm_Ivory */
-  --color-surface: #fdfbf7; /* Palette_Warm_Ivory */
-  --color-text: #2a3321; /* Garden_Foliage_Green, deepened for AAA contrast on ivory */
-  --color-muted: #6e665e; /* champagne taupe, 5.4:1 on ivory */
-  --color-border: #e8dec8; /* Palette_Champagne_Beige */
-  --color-blush: #e5c1c8; /* Floral_Dusty_Blush */
-  --color-gold-deep: #7a5f18; /* Soft_Gold darkened for text use (5.3:1 on ivory) */
+  /* Ivory, champagne and muted gold, lit warm; floral tones only as accents. */
+  --color-background: #f4ede1; /* warm ivory */
+  --color-surface: #fbf8f2; /* paper ivory */
+  --color-border: #e3d6bf; /* champagne */
+  --color-beige: #d9c7a8; /* warm beige */
+  --color-blush: #e8d3cb; /* soft floral blush */
+  --color-accent: #b8975f; /* muted gold, lines and ornaments only */
+  --color-gold-deep: #7a5e2e; /* gold for text, 5.2:1 on ivory */
+  --color-primary: #8f5a63; /* dusty rose, the ampersand and errors, 5:1 on ivory */
+  --color-secondary: #5a4632; /* bronze umber, labels and buttons */
+  --color-text: #2b231c; /* espresso ink */
+  --color-muted: #6b5e50; /* warm taupe, 5.4:1 on ivory */
   --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -30,8 +31,8 @@ body {
 }
 
 :focus-visible {
-  outline: 1.5px solid var(--color-secondary);
-  outline-offset: 3px;
+  outline: 1px solid var(--color-gold-deep);
+  outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -52,38 +53,58 @@ body {
   opacity: 1;
 }
 .veil-home {
-  background: linear-gradient(to top, var(--color-background) 0%, rgb(246 242 234 / 0.9) 22%, rgb(246 242 234 / 0) 52%);
+  background: linear-gradient(to top, var(--color-background) 0%, rgb(244 237 225 / 0.9) 24%, rgb(244 237 225 / 0) 55%);
 }
 .veil-story {
-  background: rgb(246 242 234 / 0.9);
+  background: rgb(244 237 225 / 0.9);
 }
 .veil-event,
 .veil-location {
-  background: rgb(246 242 234 / 0.88);
+  background: rgb(244 237 225 / 0.88);
 }
 .veil-gallery,
 .veil-rsvp {
-  background: rgb(246 242 234 / 0.95);
+  background: rgb(244 237 225 / 0.95);
 }
 .veil-closing {
-  background: linear-gradient(to top, var(--color-background) 0%, rgb(246 242 234 / 0.88) 30%, rgb(246 242 234 / 0) 60%);
+  background: linear-gradient(to top, var(--color-background) 0%, rgb(244 237 225 / 0.88) 30%, rgb(244 237 225 / 0) 62%);
 }
 @media (min-width: 768px) {
   .veil-story {
-    background: linear-gradient(to right, var(--color-background) 0%, rgb(246 242 234 / 0.94) 46%, rgb(246 242 234 / 0.35) 72%, rgb(246 242 234 / 0.1) 100%);
+    background: linear-gradient(to right, var(--color-background) 0%, rgb(244 237 225 / 0.94) 46%, rgb(244 237 225 / 0.35) 72%, rgb(244 237 225 / 0.1) 100%);
   }
   .veil-event,
   .veil-location {
-    background: linear-gradient(to left, var(--color-background) 0%, rgb(246 242 234 / 0.93) 52%, rgb(246 242 234 / 0.45) 78%, rgb(246 242 234 / 0.2) 100%);
+    background: linear-gradient(to left, var(--color-background) 0%, rgb(244 237 225 / 0.93) 52%, rgb(244 237 225 / 0.45) 78%, rgb(244 237 225 / 0.2) 100%);
   }
+}
+
+/* Lens treatment over the venue: warm falloff at the edges and a still film grain. */
+.lens {
+  background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgb(90 70 50 / 0.22) 100%);
+}
+.lens::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* The venue before the lights come up: candlelit dusk, dark enough for ivory type. */
+.dusk {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 38%, rgb(43 35 28 / 0.15), rgb(43 35 28 / 0.55) 100%),
+    linear-gradient(to top, rgb(28 22 17 / 0.92) 0%, rgb(28 22 17 / 0.7) 38%, rgb(28 22 17 / 0.2) 75%, rgb(28 22 17 / 0.35) 100%);
 }
 
 /* Shown when WebGL or the model is unavailable: the venue's palette, without the venue. */
 .venue-fallback {
   background:
-    radial-gradient(ellipse 60% 45% at 50% 38%, rgb(229 193 200 / 0.55), transparent 70%),
-    radial-gradient(ellipse 40% 60% at 15% 60%, rgb(76 81 55 / 0.22), transparent 70%),
-    radial-gradient(ellipse 40% 60% at 85% 60%, rgb(76 81 55 / 0.22), transparent 70%),
-    radial-gradient(circle at 50% 30%, rgb(212 175 55 / 0.18), transparent 35%),
+    radial-gradient(ellipse 60% 45% at 50% 38%, rgb(232 211 203 / 0.7), transparent 70%),
+    radial-gradient(ellipse 40% 60% at 15% 60%, rgb(217 199 168 / 0.45), transparent 70%),
+    radial-gradient(ellipse 40% 60% at 85% 60%, rgb(217 199 168 / 0.45), transparent 70%),
+    radial-gradient(circle at 50% 30%, rgb(184 151 95 / 0.2), transparent 35%),
     var(--color-background);
 }

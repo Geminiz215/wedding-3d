@@ -43,15 +43,12 @@ export const MODEL_PALETTE = {
   chandelierCrystalWarm: '#FFF8E7',
 } as const;
 
-export const THEME_TOKENS = {
-  '--color-primary': '#B6768B',      // Floral_Mauve_Rose & Velvet_Box_Dusty_Blush
-  '--color-secondary': '#4C5137',    // Olive_Green_Drape
-  '--color-accent': '#D4AF37',       // Palette_Soft_Gold
-  '--color-background': '#F6F2EA',   // Stage_Warm_Ivory
-  '--color-surface': '#FDFBF7',      // Palette_Warm_Ivory
-  '--color-text': '#2A3321',         // Deep Botanical Olive derived from Garden_Foliage_Green (#3B492E) for WCAG AAA readability
-  '--color-muted': '#6E665E',        // Warm muted taupe harmonized with Champagne Beige & Lavender Spike
-  '--color-border': '#E8DEC8',       // Palette_Champagne_Beige
+/** Scene-side copies of UI tones (app/globals.css), so the venue dissolves into the page. */
+export const SCENE_TONES = {
+  ivory: '#F4EDE1', // --color-background
+  candle: '#FFD9A8',
+  keyLight: '#FFE4C2',
+  umber: '#5A4632', // --color-secondary
 } as const;
 
 export type SectionId = 'opening' | 'home' | 'story' | 'event' | 'gallery' | 'location' | 'rsvp' | 'closing';

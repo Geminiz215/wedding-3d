@@ -17,14 +17,16 @@ const config: Config = {
         muted: 'var(--color-muted)',
         border: 'var(--color-border)',
         blush: 'var(--color-blush)',
+        beige: 'var(--color-beige)',
         gold: 'var(--color-gold-deep)',
+        ivory: 'rgb(251 248 242 / <alpha-value>)', // --color-surface, with opacity support for type on dark scenes
       },
       transitionTimingFunction: {
         cinematic: 'var(--ease-cinematic)',
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        sans: ['var(--font-plus-jakarta)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-display)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
     },
   },

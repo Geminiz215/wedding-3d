@@ -4,7 +4,7 @@ import React, { Component, ReactNode, Suspense, useEffect, useRef, useState } fr
 import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Lightformer, OrbitControls, PerformanceMonitor, Sparkles } from '@react-three/drei';
-import { CAMERA_KEYFRAMES, MODEL_PALETTE, SectionId } from '@/config/theme';
+import { CAMERA_KEYFRAMES, MODEL_PALETTE, SCENE_TONES, SectionId } from '@/config/theme';
 import { WeddingBackdropModel } from './WeddingBackdropModel';
 
 interface RigProps {
@@ -132,15 +132,16 @@ export function VenueSceneCanvas({
       aria-hidden
     >
       <PerformanceMonitor onDecline={() => setDpr(1)} />
-      <color attach="background" args={[MODEL_PALETTE.stageWarmIvory]} />
-      {/* Distance fog in the stage colour: the venue emerges from the ivory as the camera walks in */}
-      <fog attach="fog" args={[MODEL_PALETTE.stageWarmIvory, 0.6, 1.6]} />
+      <color attach="background" args={[SCENE_TONES.ivory]} />
+      {/* Distance fog in the page colour: the venue emerges from the ivory as the camera walks in */}
+      <fog attach="fog" args={[SCENE_TONES.ivory, 0.6, 1.6]} />
 
-      <hemisphereLight args={['#FFF8EC', MODEL_PALETTE.oliveGreenDrape, 0.55]} />
+      {/* Warm, low-key cinematic lighting: tungsten key, umber bounce, a backlit rim and candle glow */}
+      <hemisphereLight args={['#FFF1DE', SCENE_TONES.umber, 0.4]} />
       <directionalLight
         position={[0.32, 0.5, 0.42]}
-        intensity={1.5}
-        color="#FFF3E0"
+        intensity={1.6}
+        color={SCENE_TONES.keyLight}
         castShadow={!isMobile}
         shadow-mapSize={[1024, 1024]}
         shadow-bias={-0.0004}
@@ -152,9 +153,10 @@ export function VenueSceneCanvas({
         shadow-camera-near={0.05}
         shadow-camera-far={1.5}
       />
-      <directionalLight position={[-0.4, 0.22, 0.3]} intensity={0.45} color={MODEL_PALETTE.giantFlowerBlush} />
-      {/* Candle / chandelier warmth */}
-      <pointLight position={[0, 0.16, 0.03]} intensity={0.06} distance={0.4} decay={2} color="#FFD9A0" />
+      <directionalLight position={[-0.4, 0.22, 0.3]} intensity={0.3} color={MODEL_PALETTE.giantFlowerBlush} />
+      <directionalLight position={[0, 0.35, -0.45]} intensity={0.7} color={SCENE_TONES.candle} />
+      <pointLight position={[0, 0.16, 0.03]} intensity={0.14} distance={0.45} decay={2} color={SCENE_TONES.candle} />
+      <pointLight position={[0, 0.07, 0.12]} intensity={0.05} distance={0.2} decay={2} color={SCENE_TONES.candle} />
 
       {/* Studio reflections without a network HDR: gold and crystal need something to reflect */}
       <Environment resolution={isMobile ? 128 : 256} frames={1}>
@@ -179,9 +181,9 @@ export function VenueSceneCanvas({
           position={[0, 0.11, 0.08]}
           size={isMobile ? 1.2 : 1.6}
           speed={0.12}
-          opacity={0.55}
+          opacity={0.45}
           noise={0.4}
-          color={MODEL_PALETTE.flowerCoreGold}
+          color={SCENE_TONES.candle}
         />
       )}
 

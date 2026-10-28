@@ -45,12 +45,18 @@ export function Ornament({ className = '' }: { className?: string }) {
   );
 }
 
+/** Editorial kicker: a gold hairline leading into small spaced capitals. */
 export function Eyebrow({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return <p className={`text-[11px] font-medium uppercase tracking-[0.32em] text-secondary ${className}`}>{children}</p>;
+  return (
+    <p className={`inline-flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.34em] text-secondary ${className}`}>
+      <span className="h-px w-8 bg-accent" aria-hidden />
+      {children}
+    </p>
+  );
 }
 
 export const buttonPrimary =
-  'inline-flex items-center justify-center gap-3 bg-secondary px-8 py-4 text-[11px] font-medium uppercase tracking-[0.28em] text-surface transition-colors duration-500 hover:bg-text disabled:cursor-wait';
+  'inline-flex items-center justify-center gap-3 bg-text px-9 py-4 text-[11px] font-medium uppercase tracking-[0.3em] text-surface transition-colors duration-700 ease-cinematic hover:bg-gold disabled:cursor-wait';
 
 export const buttonGhost =
-  'inline-flex items-center justify-center gap-2.5 border-b border-secondary pb-1.5 text-[11px] font-medium uppercase tracking-[0.26em] text-secondary transition-colors duration-500 hover:border-primary hover:text-primary';
+  'inline-flex items-center justify-center gap-2.5 border-b border-accent pb-1.5 text-[11px] font-medium uppercase tracking-[0.28em] text-secondary transition-colors duration-500 hover:border-gold hover:text-gold';
