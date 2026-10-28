@@ -50,7 +50,7 @@ export function OpeningInvitation({ visible, status, progress, pending, onOpen }
 
             <motion.h1 {...item(0.9)} className="mt-6 font-serif text-[3.25rem] font-normal leading-[0.95] tracking-[-0.01em] sm:text-7xl md:text-8xl">
               {couple.groom.nickname}
-              <span className="mx-3 font-normal italic text-blush md:mx-5">&amp;</span>
+              <span className="my-1 block font-normal italic text-blush sm:mx-3 sm:my-0 sm:inline md:mx-5">&amp;</span>
               {couple.bride.nickname}
             </motion.h1>
 

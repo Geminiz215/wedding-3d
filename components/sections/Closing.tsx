@@ -37,7 +37,7 @@ export function Closing({ onExplore }: { onExplore: (() => void) | null }) {
       <Reveal delay={0.2} className="mt-8">
         <p className="font-serif text-[3.25rem] leading-[0.95] tracking-[-0.01em] text-text sm:text-7xl md:text-8xl">
           {couple.groom.nickname}
-          <span className="mx-3 italic text-primary md:mx-5">&amp;</span>
+          <span className="my-1 block italic text-primary sm:mx-3 sm:my-0 sm:inline md:mx-5">&amp;</span>
           {couple.bride.nickname}
         </p>
         <div className="mt-5 flex flex-col items-center gap-3">

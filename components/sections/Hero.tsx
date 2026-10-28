@@ -21,7 +21,7 @@ export function Hero() {
       </motion.p>
       <motion.h1 {...rise(0.45)} className="mt-5 font-serif text-[3.25rem] font-normal leading-[0.95] tracking-[-0.01em] text-text sm:text-7xl md:text-8xl">
         {couple.groom.nickname}
-        <span className="mx-3 italic text-primary md:mx-5">&amp;</span>
+        <span className="my-1 block italic text-primary sm:mx-3 sm:my-0 sm:inline md:mx-5">&amp;</span>
         {couple.bride.nickname}
       </motion.h1>
       <motion.div {...rise(0.7)} className="mt-7 flex flex-col items-center gap-4">

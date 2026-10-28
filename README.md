@@ -18,18 +18,23 @@ Website undangan pernikahan 3D interaktif yang menjadikan model **`public/models
   - Meja Akad & Cincin: `19_Akad_Table_Top_Warm_Ivory`, `20_Akad_Table_Runner_Champagne`, `21_Akad_Table_Frame_Soft_Gold`, `22_Velvet_Ring_Box_Dusty_Blush`, `23_Ring_Box_Cushion_Champagne`, `24_Wedding_Rings_Soft_Gold`
   - Pencahayaan & Pilar: `13_Backdrop_Candlesticks_Gold`, `14_Backdrop_Taper_Candles_Ivory`, `25_Standing_Pillars_Champagne`, `26_Standing_Pillars_Soft_Gold`, `30_Chandelier_Frame_Soft_Gold`, `31_Chandelier_Crystals_Warm_Ivory`
 
-## Palet Warna & Design Tokens (Diambil Langsung dari Material GLB)
+## Arah Desain
 
-| Token CSS | Hex (sRGB) | Referensi Material GLB | Penggunaan UI |
-| :--- | :--- | :--- | :--- |
-| `--color-primary` | `#B6768B` | `Floral_Mauve_Rose` & `Velvet_Box_Dusty_Blush` | Aksen utama, tombol interaktif, badge |
-| `--color-secondary` | `#4C5137` | `Olive_Green_Drape` | Tombol utama, label editorial, aksen struktural |
-| `--color-accent` | `#D4AF37` | `Palette_Soft_Gold` & `Giant_Flower_Core_Gold` | Ornamen garis tipis, ikon, partikel cahaya |
-| `--color-background` | `#F6F2EA` | `Stage_Warm_Ivory` | Latar belakang utama & fog scene 3D |
-| `--color-surface` | `#FDFBF7` | `Palette_Warm_Ivory` | Panel editorial, kartu undangan, form RSVP |
-| `--color-text` | `#2A3321` | `Garden_Foliage_Green` (`#3B492E` darkened) | Tipografi utama dengan kontras WCAG AAA |
-| `--color-muted` | `#6E665E` | `Palette_Champagne_Beige` & `Garden_Lavender_Spike` | Teks sekunder, subjudul, keterangan waktu |
-| `--color-border` | `#E8DEC8` | `Palette_Champagne_Beige` | Garis pembatas tipis dan bingkai foto |
+Immersive 3D, sinematik, editorial mewah, romantis minimalis. Pembukaan berupa title sequence di atas venue "senja" (letterbox + tipografi ivory); saat undangan dibuka, bar letterbox tertarik dan cahaya venue naik. Tipografi: **Bodoni Moda** (serif kontras tinggi, nama & judul) + **Jost** (sans, informasi pendukung).
+
+| Token CSS | Hex | Penggunaan UI |
+| :--- | :--- | :--- |
+| `--color-background` | `#F4EDE1` | Warm ivory, latar & fog scene 3D |
+| `--color-surface` | `#FBF8F2` | Paper ivory, teks di atas latar gelap |
+| `--color-border` | `#E3D6BF` | Champagne, garis pembatas |
+| `--color-beige` | `#D9C7A8` | Warm beige, label di layar pembuka |
+| `--color-blush` | `#E8D3CB` | Soft floral, ampersand di layar pembuka |
+| `--color-accent` | `#B8975F` | Muted gold, garis & ornamen saja |
+| `--color-gold-deep` | `#7A5E2E` | Gold untuk teks (5.2:1) |
+| `--color-primary` | `#8F5A63` | Dusty rose, ampersand & pesan error |
+| `--color-secondary` | `#5A4632` | Bronze umber, label |
+| `--color-text` | `#2B231C` | Espresso ink, teks utama & tombol |
+| `--color-muted` | `#6B5E50` | Warm taupe, teks sekunder (5.4:1) |
 
 ## Cara Menjalankan Proyek Next.js
 
