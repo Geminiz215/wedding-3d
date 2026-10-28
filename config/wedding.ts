@@ -242,5 +242,35 @@ export const WEDDING_CONFIG = {
         'Barakallahu lakuma wa baraka alaikuma wa jama’a bainakuma fii khair. Turut berbahagia atas bersatunya Arka dan Nadine dalam ikatan suci pernikahan.',
       createdAt: '2026-11-25T19:30:00+07:00',
     },
+    {
+      id: 'wish-dummy-3',
+      name: 'Maya Anggraini',
+      relation: 'Teman Kuliah',
+      attendance: 'hadir',
+      guestsCount: 2,
+      message:
+        'Happy wedding Nadine & Arka! Masih ingat cerita kalian waktu awal ketemu dulu, dan seneng banget akhirnya sampai di pelaminan. Langgeng dan bahagia selalu ya!',
+      createdAt: '2026-11-26T14:20:00+07:00',
+    },
+    {
+      id: 'wish-dummy-4',
+      name: 'Dimas Setiawan & Keluarga',
+      relation: 'Rekan Kerja',
+      attendance: 'hadir',
+      guestsCount: 3,
+      message:
+        'Selamat atas pernikahannya Mas Arka & Mbak Nadine. Semoga menjadi keluarga yang sakinah, mawaddah, wa rahmah. Aamiin.',
+      createdAt: '2026-11-27T08:45:00+07:00',
+    },
+    {
+      id: 'wish-dummy-5',
+      name: 'Salsabila Putri',
+      relation: 'Sahabat Nadine',
+      attendance: 'tidak_hadir',
+      guestsCount: 0,
+      message:
+        'Dearest Nadine & Arka, mohon maaf sekali belum bisa hadir langsung karena masih di luar kota. Dari jauh aku doakan semoga seluruh rangkaian acara berjalan lancar dan kalian berdua selalu dilimpahi keberkahan!',
+      createdAt: '2026-11-28T16:10:00+07:00',
+    },
   ] as GuestWish[],
 } as const;
