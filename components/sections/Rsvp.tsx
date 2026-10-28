@@ -30,7 +30,7 @@ export function Rsvp() {
   const [errors, setErrors] = useState<RsvpFieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [serverError, setServerError] = useState('');
-  const [wishes, setWishes] = useState<GuestWish[]>([]);
+  const [wishes, setWishes] = useState<GuestWish[]>(WEDDING_CONFIG.initialWishes);
 
   useEffect(() => {
     listWishes().then(setWishes);

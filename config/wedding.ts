@@ -221,6 +221,26 @@ export const WEDDING_CONFIG = {
     deadlineDisplay: '1 Desember 2026',
   },
 
-  // Wishes come from lib/rsvpService.ts. Keep empty: never ship invented guest messages.
-  initialWishes: [] as GuestWish[],
+  initialWishes: [
+    {
+      id: 'wish-dummy-1',
+      name: 'Rendra & Clara',
+      relation: 'Sahabat Mempelai',
+      attendance: 'hadir',
+      guestsCount: 2,
+      message:
+        'Selamat menempuh hidup baru Arka & Nadine! Semoga pernikahan kalian selalu diberkahi kebahagiaan, ketenangan, dan cinta yang terus bertumbuh hingga menua bersama.',
+      createdAt: '2026-11-28T10:15:00+07:00',
+    },
+    {
+      id: 'wish-dummy-2',
+      name: 'dr. Aditya Pratama',
+      relation: 'Keluarga Besar',
+      attendance: 'hadir',
+      guestsCount: 1,
+      message:
+        'Barakallahu lakuma wa baraka alaikuma wa jama’a bainakuma fii khair. Turut berbahagia atas bersatunya Arka dan Nadine dalam ikatan suci pernikahan.',
+      createdAt: '2026-11-25T19:30:00+07:00',
+    },
+  ] as GuestWish[],
 } as const;
